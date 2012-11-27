@@ -3998,7 +3998,7 @@ Readium.Views.ReflowablePaginationView = Readium.Views.PaginationViewBase.extend
 		this.model.on("change:two_up", this.setUpMode, this);
 		this.model.on("change:two_up", this.adjustIframeColumns, this);
 		this.model.on("change:current_margin", this.marginCallback, this);
-		this.model.on("save_position", this.savePosition, this);
+		// this.model.on("save_position", this.savePosition, this);
 	},
 
 	render: function(goToLastPage, hashFragmentId) {
