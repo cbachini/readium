@@ -3865,7 +3865,6 @@ Readium.Views.ReflowablePaginationView = Readium.Views.PaginationViewBase.extend
 		this.model.on("change:two_up", this.setUpMode, this);
 		this.model.on("change:two_up", this.adjustIframeColumns, this);
 		this.model.on("change:current_margin", this.marginCallback, this);
-		// this.model.on("save_position", this.savePosition, this);
 	},
 
 	render: function(goToLastPage, hashFragmentId) {
@@ -4286,88 +4285,6 @@ Readium.Views.ReflowablePaginationView = Readium.Views.PaginationViewBase.extend
 		// This will be undefined unless there is a "last-page" element injected into the page
 		return lastPageElementId;
 	},
-
-	// Save position in epub
-	// savePosition : function () {
-
-	// 	var $visibleTextNode;
-	// 	var existingCFI;
-	// 	var lastPageMarkerExists = false;
-	// 	var characterOffset;
-	// 	var contentDocumentIdref;
-	// 	var packageDocument;
-	// 	var generatedCFI;
-
-	// 	// Get first visible element with a text node 
-	// 	$visibleTextNode = this.findVisibleTextNode();
-
-	// 	// Check if a last page marker already exists on this page
-	// 	try {
-	// 		$.each($visibleTextNode.parent().contents(), function () {
-
-	// 			if ($(this).hasClass("last-page")) {
-	// 				lastPageMarkerExists = true;
-	// 				existingCFI = $(this).attr("data-last-page-cfi");
-
-	// 				// Break out of loop
-	// 				return false;
-	// 			}
-	// 		});
-	// 	}
-	// 	catch (e) {
-
-	// 		console.log("Could not generate CFI for non-text node as first visible element on page");
-
-	// 		// No need to execute the rest of the save position method if the first visible element is not a text node
-	// 		return;
-	// 	}
-
-	// 	// Re-add the CFI for the marker on this page and shortcut the method
-	// 	// REFACTORING CANDIDATE: This shortcut makes this method confusing, it needs to be refactored for simplicity
-	// 	if (lastPageMarkerExists) {
-
-	// 		this.model.addLastPageCFI(existingCFI, this.model.get("spine_position"));
-	// 		this.model.save();
-	// 		return; 
-	// 	}
-
-	// 	characterOffset = this.findVisibleCharacterOffset($visibleTextNode);
-
-	// 	// Get the content document idref
-	// 	contentDocumentIdref = this.model.getCurrentSection().get("idref");
-
-	// 	// Get the package document
-	// 	// REFACTORING CANDIDATE: This is a temporary approach for retrieving a document representation of the 
-	// 	//   package document. Probably best that the package model be able to return this representation of itself.
- //        $.ajax({
-
- //            type: "GET",
- //            url: this.model.epub.get("root_url"),
- //            dataType: "xml",
- //            async: false,
- //            success: function (response) {
-
- //                packageDocument = response;
- //            }
- //        });
-
-	// 	// Save the position marker
-	// 	generatedCFI = EPUBcfi.Generator.generateCharacterOffsetCFI(
-	// 		$visibleTextNode[0], 
-	// 		characterOffset, 
-	// 		contentDocumentIdref, 
-	// 		packageDocument, 
-	// 		["cfi-marker", "audiError"], 
-	// 		[], 
-	// 		["MathJax_Message"]);
-
-	// 	this.model.addLastPageCFI(
-	// 		generatedCFI, 
-	// 		this.model.get("spine_position"));
-
-	// 	// Save the last page marker been added
-	// 	this.model.save();
-	// },
 
 	adjustIframeColumns: function() {
 		var prop_dir = this.offset_dir;
