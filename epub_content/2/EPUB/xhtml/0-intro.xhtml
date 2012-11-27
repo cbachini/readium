@@ -2,13 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="../css/cole.css" />
+        <style type="text/css">
+            body { margin: 0; }
+            .hot-spot { cursor: pointer; }
+            .popup-extra { text-align: center;  }
+        </style>
+
+        <script src="../script/jquery-1.7.1.min.js" type="text/javascript" ></script>
+        <script src="../script/bootstrap-modal.js" type="text/javascript"></script>
+
     </head>
     <body class="reflow">
+        <div id="popup" class="modal hide fade in popup-extra" style="display: none;">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+            </div>
+            <div class="modal-body">
+                <img alt="" src="" />
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+            </div>
+        </div>
         <h1>The Voyage of Life</h1>
         <p><em>The Voyage of Life</em> series, painted by Thomas Cole in 1842, is a series of
-            paintings that represent an allegory of the four stages of human life: childhood, youth,
-            manhood, and old age.</p>
+            paintings that represent an allegory of the four stages of human life:
+            <span style="background-color:#ffff00" id="childhood" class="hot-spot" img-src="../images/1-childhood-320.jpg">childhood</span>,
+            <span style="background-color:#ffff00" id="youth" class="hot-spot" img-src="../images/2-youth-320.jpg">youth</span>,
+            <span style="background-color:#ffff00" id="manhood" class="hot-spot" img-src="../images/3-manhood-320.jpg">manhood</span>, and
+            <span style="background-color:#ffff00" id="old-age" class="hot-spot" img-src="../images/4-oldage-320.jpg">old age</span>.</p>
         <p> The paintings follow a voyager who travels in a boat on a river through the mid-19th
             century American wilderness. In each painting, accompanied by a guardian angel, the
             voyager rides the boat on the River of Life. The landscape, corresponding to the seasons
@@ -44,5 +68,12 @@
                 Utica, New York, the second set is at the National Gallery of Art in Washington,
                 D.C.</p>
         </section>
+        <script type="text/javascript">
+            $(".hot-spot").on("click", function(){
+                var url = $(this).attr('img-src');
+                $("#popup img").attr('src', url);
+                $("#popup").modal({backdrop:false});
+            });
+        </script>
     </body>
 </html>
