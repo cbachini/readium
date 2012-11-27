@@ -728,8 +728,6 @@ Readium.Views.ReflowablePaginationView = Readium.Views.PaginationViewBase.extend
 				that.goToPage(that.pages.get("current_page")[0]);
 			}
 
-			// that.savePosition();
-
 		}, 150);
 	},
 
